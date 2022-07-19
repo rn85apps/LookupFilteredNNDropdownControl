@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="RN" constructor="LookupFilteredNNDropdown" version="0.0.1" display-name-key="LookupFilteredNNDropdown" description-key="LookupFilteredNNDropdown description" control-type="standard" >
+    <!--external-service-usage node declares whether this 3rd party PCF control is using external service or not, if yes, this control will be considered as premium and please also add the external domain it is using.
+    If it is not using any external service, please set the enabled="false" and DO NOT add any domain below. The "enabled" will be false by default.
+    Example1:
+      <external-service-usage enabled="true">
+        <domain>www.Microsoft.com</domain>
+      </external-service-usage>
+    Example2:
+      <external-service-usage enabled="false">
+      </external-service-usage>
+    -->
+    <external-service-usage enabled="false">
+      <!--UNCOMMENT TO ADD EXTERNAL DOMAINS
+      <domain></domain>
+      <domain></domain>
+      -->
+    </external-service-usage>
+    <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
+    <property name="filteringLookup" display-name-key="FilteringLookup" description-key="Lookup value on the record that will be used to filter the target records" of-type="Lookup.Simple" usage="bound" required="true" />
+    <property name="recordId" display-name-key="RecordId" description-key="GUID of the record on the form" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="recordTypeName" display-name-key="recordTypeName" description-key="Table type name for the record on the form.  Set this on modeldrivenform to entitylogicalname" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="recordIdAttribute" display-name-key="RecordIdAttribute" description-key="Logical name of the record on the unique identifier column" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="targetName" display-name-key="TargetName" description-key="The logical name of the target table type." of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="targetIdAttribute" display-name-key="TargetIdAttribute" description-key="The logical name of the target unique identifier column." of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="targetNameAttribute" display-name-key="TargetNameAttribute" description-key="The logical name of the target primary name column. This displays in the dropdown." of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="targetLookupAttribute" display-name-key="TargetLookupAttribute" description-key="The logical name of the lookup column from the target record type to the filtering record type." of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="targetGroupingAttribute" display-name-key="TargetGroupingAttribute" description-key="The logical name of a column to group the target records by in the dropdown" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="relationshipName" display-name-key="RelationshipName" description-key="The name of the relationship table between the target table and the filtering table." of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="relationshipTableName" display-name-key="RelationshipTableName" description-key="The name of the relationship table between the target table and the filtering table." of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="dropdownIcon" display-name-key="dropdownIcon" description-key="Enter a fluent UI icon name.  It will be listed in the dropdown list." of-type="SingleLine.Text" usage="input" required="false" />
+
+    
+    <!--
+      Property node's of-type attribute can be of-type-group attribute.
+      Example:
+      <type-group name="numbers">
+        <type>Whole.None</type>
+        <type>Currency</type>
+        <type>FP</type>
+        <type>Decimal</type>
+      </type-group>
+      <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type-group="numbers" usage="bound" required="true" />
+    -->
+    <resources>
+      <code path="index.ts" order="1"/>
+      <!-- UNCOMMENT TO ADD MORE RESOURCES
+      <css path="css/LookupFilteredNNDropdown.css" order="1" />
+      <resx path="strings/LookupFilteredNNDropdown.1033.resx" version="1.0.0" />
+      -->
+    </resources>
+    <feature-usage>
+      <!-- UNCOMMENT TO ENABLE THE SPECIFIED API
+      <uses-feature name="Device.captureAudio" required="true" />
+      <uses-feature name="Device.captureImage" required="true" />
+      <uses-feature name="Device.captureVideo" required="true" />
+      <uses-feature name="Device.getBarcodeValue" required="true" />
+      <uses-feature name="Device.getCurrentPosition" required="true" />
+      <uses-feature name="Device.pickFile" required="true" />
+      -->
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+  </control>
+</manifest>
